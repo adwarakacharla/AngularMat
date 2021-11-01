@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" class="tdms-toolbar">
+  <button mat-icon-button (click)="isExpanded = !isExpanded">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 class="tdms-app-name">TDMS APP</h1>
+</mat-toolbar>
+<mat-sidenav-container class="tdms-container" autosize>
+  <mat-sidenav #sidenav class="tdms-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
+    (mouseleave)="mouseleave()">
+    <mat-nav-list>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">TDMS App Menu</span>
+        <mat-icon mat-list-icon>home</mat-icon>
+        <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more
+        </mat-icon>
+      </mat-list-item>
+      <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+        <a mat-list-item href="tdmsgrid">TDMS Search</a>
+        <a mat-list-item href="...">Future TAB TDB..</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="tdms-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>

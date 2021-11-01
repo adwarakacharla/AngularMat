@@ -1,0 +1,17 @@
+.tdmsgrid-container .mat-form-field + .mat-form-field {
+    margin-left: 18px;
+  }
+  
+  .tdms-right-align {
+    text-align: right;
+  }
+  
+  input.tdms-right-align::-webkit-outer-spin-button,
+  input.tdms-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.tdms-right-align {
+    -moz-appearance: textfield;
+  }
+  

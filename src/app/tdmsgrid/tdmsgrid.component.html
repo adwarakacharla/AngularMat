@@ -1,0 +1,50 @@
+<div class="tdmsgrid-container">
+    <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" class="tdms-right-align" placeholder="Enter First Name..">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" class="tdms-right-align" placeholder="Enter Last Name..">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>Career</mat-label>
+        <input matInput type="text" class="tdms-right-align" placeholder="Enter Career..">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="getRecords()">Search</button>
+
+
+    <mat-table class="tdms-search-table mat-elevation-z8" [dataSource]="dataSource">
+
+        <ng-container matColumnDef="seqNo">
+            <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+            <mat-cell *matCellDef="let tdms">{{tdms.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="first_name">
+            <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let tdms">{{tdms.first_name}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="last_name">
+            <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+            <mat-cell class="duration-cell" *matCellDef="let tdms">{{tdms.last_name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="career">
+            <mat-header-cell *matHeaderCellDef>Career</mat-header-cell>
+            <mat-cell class="duration-cell" *matCellDef="let tdms">{{tdms.career}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+</div>
+
+<mat-paginator #paginator [pageSizeOptions]="[1, 2, 3]" showFirstLastButtons></mat-paginator>
